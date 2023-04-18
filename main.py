@@ -14,10 +14,9 @@ def shorten_link(user_input, token):
         "Authorization": f"Bearer {token}"
     }
 
-    response = requests.post(url, json=payload, 
-    headers=headers)
+    response = requests.post(url, json=payload, headers=headers)
     response.raise_for_status()
-    bitlink = response.json()["link"] 
+    bitlink = response.json()["link"]
     return bitlink
 
 
@@ -57,7 +56,7 @@ def main():
             bitlink = shorten_link(args.url, token)
             print(bitlink)
     except requests.exceptions.HTTPError:
-            print("Неверная ссылка")
+        print("Неверная ссылка")
 
 
 if __name__ == "__main__":
